@@ -1,6 +1,38 @@
 # fullstack
 
-Frontend & Backend в связке (API + асинхронный запрос с сервера)
+>Frontend & Backend в связке (API + асинхронный запрос с сервера)
+
+* [Запуск данного проекта](#Запуск-данного-проекта)
+* [Настройка сервера backend c нуля](#Настройка-сервера-backend-c-нуля)
+* [Настройка сервера frontend c нуля](#Настройка-сервера-frontend-c-нуля)
+
+##Запуск данного проекта
+1. Заходим в папку backend
+```cmd
+    cd fullstack-backend
+```
+2. Устанавливаем зависимости
+```cmd
+    npm i
+```
+3. Запускаем сервер backend
+```cmd
+    npm run start
+```
+4. Открываем новый терминал заходим в папку frontend
+```cmd
+    cd fullstack-frontend
+```
+5. Устанавливаем зависимости
+```cmd
+    npm i
+```
+6. Запускаем сервер frontend
+```cmd
+    npm run start
+```
+
+##Настройка сервера backend c нуля
 
 Создаём `package.json` в корне репозитория
 
@@ -77,6 +109,8 @@ app.get("/api", (req, res) => {
 { "message": "Hello from backend server" }
 ```
 
+##Настройка сервера frontend c нуля
+
 Для создания приложения frontend-приложения запустите:
 
 ```cmd
@@ -118,3 +152,15 @@ useEffect(() => {
 Снятие защиты с браузера (перевод в тестовый режим)
 
 Смотрим файл `MainPage.tsx` для работы с вытаскиванием данных с сервера
+
+Для запуска сервера frontend:
+
+1. Перейти в папку frontend (в моём случае fullstack-frontend) `cd fullstack-frontend`
+2. Ввести команду
+```cmd
+npm i
+```
+3. Запуск сервера frontend
+```cmd
+npm run start
+```
