@@ -1,6 +1,7 @@
 {
   "name": "fullstack-frontend",
   "version": "0.1.0",
+  "description": "frontend",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^2.2.3",

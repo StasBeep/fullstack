@@ -1,0 +1,24 @@
+{
+  "name": "fullstack-backend",
+  "version": "1.0.0",
+  "description": "backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StasBeep/fullstack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/StasBeep/fullstack/issues"
+  },
+  "homepage": "https://github.com/StasBeep/fullstack#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
