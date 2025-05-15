@@ -6,7 +6,7 @@
 * [Настройка сервера backend c нуля](#Настройка-сервера-backend-c-нуля)
 * [Настройка сервера frontend c нуля](#Настройка-сервера-frontend-c-нуля)
 
-##Запуск данного проекта
+## Запуск данного проекта
 1. Заходим в папку backend
 ```cmd
     cd fullstack-backend
@@ -32,7 +32,7 @@
     npm run start
 ```
 
-##Настройка сервера backend c нуля
+## Настройка сервера backend c нуля
 
 Создаём `package.json` в корне репозитория
 
@@ -109,7 +109,7 @@ app.get("/api", (req, res) => {
 { "message": "Hello from backend server" }
 ```
 
-##Настройка сервера frontend c нуля
+## Настройка сервера frontend c нуля
 
 Для создания приложения frontend-приложения запустите:
 
