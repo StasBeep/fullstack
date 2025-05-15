@@ -58,3 +58,63 @@ npm run start
 Правильный запуск backend-сервера выглядит:
 
 <img src='./img/completed-start-back-server.png' alt='success start server' />
+
+Дописываем get-запрос для сервера в index.js
+
+```js
+app.get("/api", (req, res) => {
+  res.json({
+    message: "Hello from backend server",
+  });
+});
+```
+
+Перезапускаем сервер бека и вводим в любом браузере http://localhost:3001/**запрос**
+
+В нашем случае http://localhost:3001/api выдаёт результат:
+
+```json
+{ "message": "Hello from backend server" }
+```
+
+Для создания приложения frontend-приложения запустите:
+
+```cmd
+npx create-react-app fullstack-frontend
+```
+
+либо скопируйте готовый шаблон реакта
+
+Заходим в `package.json` фронта и дописываем:
+
+```json
+"proxy": "http://localhost:3001"
+```
+
+строка обозначает где находится ссылка на сервер бека
+
+Далее настраиваем axios для работы api
+
+Смотрим папку api в frontend-папке и файл `.env`
+
+Для запроса:
+
+```tsx
+useEffect(() => {
+  getCommon().then((response) => {
+    console.log(response);
+  });
+}, []);
+```
+
+Запрос через `axios` не сработает из-за `cors`, нужно отключить cors в браузере и пользоваться
+
+Для отключения `cors` надо в ярлыке браузере Google через свойство в поле `объект` вставить после расположения строки:
+
+```
+--disable-web-security --user-data-dir="C:\Users\ndecarteret121\AppData\Local\Google\Chrome\Testing"
+```
+
+Снятие защиты с браузера (перевод в тестовый режим)
+
+Смотрим файл `MainPage.tsx` для работы с вытаскиванием данных с сервера
