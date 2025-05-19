@@ -1,4 +1,5 @@
 const express = require("express");
+const data = require('./data.json');
 
 const PORT = process.env.PORT || 3001;
 
@@ -15,22 +16,19 @@ app.get('/api', (req, res) => {
 	})
 });
 
-
-let data = {
-	id: 1,
-	name: "John Doe",
-	age: 30
-};
-
 app.get('/api/data/:id', (req, res) => {
-	const idDataReq = req.params.id
-	console.log('start request: ' + idDataReq);
+	const idDataReq = req.params.id;
+	console.log('start request id: ' + idDataReq);
 
-	if (data.id !== parseInt(idDataReq)) {
+	const dataResponse = data.dataTest.filter((item) => item.id === parseInt(idDataReq));
+
+	console.log(dataResponse);
+
+	if (!dataResponse) {
 		console.log('No id: ' + idDataReq);
 		return res.status(404).send("Data not found");
 	} else {
-		res.json(data);
+		res.json(dataResponse[0]);
 	}
 });
 
