@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 
-import { getDataId } from "../api/controllers/common";
+import { getDataId, putDataId } from "../api/controllers/common";
 
 import { dataDto } from "../common/data.types";
 
 import {
-    Box
+    Box,
+    Button
 } from "@mui/material";
 
 const ChangeDataBackend = () => {
@@ -19,6 +20,20 @@ const ChangeDataBackend = () => {
             .catch(e => console.log(e));
     }, []);
 
+    const changeData = () => {
+        let localData = data ? data : { id: 2, age: 30, name: 'Stas' };
+
+        localData.age = 31;
+
+        if (localData.id) {
+            putDataId(localData.id, localData)
+                .then(response => {
+                    setData(response.data)
+                })
+                .catch(e => console.log(e));
+        }
+    }
+
     return <Box
         sx={{
             width: '900px',
@@ -30,6 +45,13 @@ const ChangeDataBackend = () => {
             <li>name: {data?.name}</li>
             <li>age: {data?.age}</li>
         </ul>
+        <Button
+            onClick={changeData}
+            variant='contained'
+            color='error'
+        >
+            Изменить данные
+        </Button>
     </Box>
 }
 

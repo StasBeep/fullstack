@@ -38,6 +38,8 @@ app.put('/api/data/:id', (req, res) => {
 	const id = req.params.id;
 	const updatedData = req.body;
 
+	console.log(req.body);
+
 	// Validate data existence before update
 	if (data.id !== parseInt(id)) {
 		return res.status(404).send("Data not found");
@@ -45,6 +47,8 @@ app.put('/api/data/:id', (req, res) => {
 
 	// Update data properties using object spread syntax
 	data = { ...data, ...updatedData };
+
+	console.log(data);
 
 	res.json(data);
 
