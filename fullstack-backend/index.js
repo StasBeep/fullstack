@@ -3,14 +3,14 @@ const require = createRequire(import.meta.url);
 
 const express = require("express");
 
-import { dataTest } from "./_dataTestApi.js";
+import { dataApiPattern } from "./src/api/_dataApiPattern.js";
 
 const PORT = process.env.PORT || 3001;
 
 const app = express();
 app.use(express.json());
 
-dataTest(app);
+dataApiPattern(app);
 
 app.listen(PORT, () => {
 	console.log(`Server starting on port ${PORT}`);

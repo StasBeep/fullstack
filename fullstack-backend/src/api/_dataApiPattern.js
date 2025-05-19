@@ -1,16 +1,19 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
-const fs = require('fs');
+const data = require('../../data/data.json');
 
-const data = require('./data.json');
+import { updateJsonFile } from "../helpers/_updateJsonFiles.js";
+import { searchIndexObjectDataParamId, searchObjectDataParamId } from "../helpers/_searchDatabase.js";
 
-export const dataTest = (app) => {
+export const dataApiPattern = (app) => {
+
+    //* get-запрос
     app.get('/api/data/:id', (req, res) => {
         const idDataReq = req.params.id;
         console.log('start request id: ' + idDataReq);
 
-        const dataResponse = data.dataTest.find((item) => item.id === parseInt(idDataReq));
+        const dataResponse = searchObjectDataParamId(idDataReq, data.dataTest);
 
         if (!dataResponse) {
             console.log('No id: ' + idDataReq);
@@ -20,23 +23,22 @@ export const dataTest = (app) => {
         }
     });
 
+    //* put-запрос
     app.put('/api/data/:id', (req, res) => {
         console.log('change data for id: ' + req.params.id);
         const idDataReq = req.params.id;
         const updatedData = req.body; //! Не сработает без - app.use(express.json());
 
-        let indexDataTest = data.dataTest.findIndex((item) => item.id === parseInt(idDataReq));
-
-        console.log(indexDataTest);
+        let indexDataTest = searchIndexObjectDataParamId(idDataReq, data.dataTest);
 
         if (indexDataTest === -1) {
             console.log('No id: ' + idDataReq);
             return res.status(404).send("Data not found");
         } else {
             data.dataTest[indexDataTest] = updatedData;
-            console.log("completed change data");
-            fs.writeFileSync('data.json', JSON.stringify(data, null, 4)); // JSON.stringify(data) - форматирует json-файл в строку
+            updateJsonFile('data.json', data);
             res.json(data.dataTest[indexDataTest]);
+            console.log("completed change data");
         }
     });
 }
