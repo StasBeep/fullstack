@@ -1,6 +1,8 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
+const fs = require('fs');
+
 const data = require('./data.json');
 
 export const dataTest = (app) => {
@@ -33,6 +35,7 @@ export const dataTest = (app) => {
         } else {
             data.dataTest[indexDataTest] = updatedData;
             console.log("completed change data");
+            fs.writeFileSync('data.json', JSON.stringify(data, null, 4)); // JSON.stringify(data) - форматирует json-файл в строку
             res.json(data.dataTest[indexDataTest]);
         }
     });
