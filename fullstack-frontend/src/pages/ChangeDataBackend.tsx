@@ -24,9 +24,7 @@ const ChangeDataBackend = () => {
         let localData = data ? data : { id: 2, age: 30, name: 'Stas' };
 
         localData.name = 'Stas';
-        localData.age = 31
-
-        console.log(localData)
+        localData.age = 31;
 
         if (localData.id) {
             putDataId(localData.id, localData)

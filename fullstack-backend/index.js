@@ -34,7 +34,6 @@ app.get('/api/data/:id', (req, res) => {
 	}
 });
 
-// PUT route for updating data based on ID
 app.put('/api/data/:id', (req, res) => {
 	const id = req.params.id;
 	const updatedData = req.body; //! Не сработает без - app.use(express.json());

@@ -1,33 +1,46 @@
 # fullstack
 
->Frontend & Backend в связке (API + асинхронный запрос с сервера)
+> Frontend & Backend в связке (API + асинхронный запрос с сервера)
 
-* [Запуск данного проекта](#Запуск-данного-проекта)
-* [Настройка сервера backend c нуля](#Настройка-сервера-backend-c-нуля)
-* [Настройка сервера frontend c нуля](#Настройка-сервера-frontend-c-нуля)
+- [Запуск данного проекта](#Запуск-данного-проекта)
+- [Настройка сервера backend c нуля](#Настройка-сервера-backend-c-нуля)
+- [Настройка сервера frontend c нуля](#Настройка-сервера-frontend-c-нуля)
+- [Настройка api для изменения данных в базе данных](#Настройка-api-для-изменения-данных-в-базе-данных)
 
 ## Запуск данного проекта
+
 1. Заходим в папку backend
+
 ```cmd
     cd fullstack-backend
 ```
+
 2. Устанавливаем зависимости
+
 ```cmd
     npm i
 ```
+
 3. Запускаем сервер backend
+
 ```cmd
     npm run start
 ```
+
 4. Открываем новый терминал заходим в папку frontend
+
 ```cmd
     cd fullstack-frontend
 ```
+
 5. Устанавливаем зависимости
+
 ```cmd
     npm i
 ```
+
 6. Запускаем сервер frontend
+
 ```cmd
     npm run start
 ```
@@ -157,10 +170,74 @@ useEffect(() => {
 
 1. Перейти в папку frontend (в моём случае fullstack-frontend) `cd fullstack-frontend`
 2. Ввести команду
+
 ```cmd
 npm i
 ```
+
 3. Запуск сервера frontend
+
 ```cmd
 npm run start
+```
+
+##Настройка api для изменения данных в базе данных
+Для изменения данных по параметру id добавляем в сервер backend строки
+
+```JavaScript
+app.use(express.json()); // работа с данными передаваемые с фронта
+
+app.put('/api/data/:id', (req, res) => {
+	const id = req.params.id;
+	const updatedData = req.body; //! Не сработает без - app.use(express.json());
+
+	if (data.id !== parseInt(id)) {
+		return res.status(404).send("Data not found");
+	}
+
+	data = { ...data, ...updatedData }; // изменение данных на сервере
+
+	res.json(data); // возврат данных на ответ
+});
+```
+
+Запрос на изменение данных по кнопке со стороны frontend
+
+```JavaScript
+const [data, setData] = React.useState<dataDto>(); // dataDto тип передаваемых / получаемых данных
+
+const changeData = () => {
+  let localData = data ? data : { id: 2, age: 30, name: 'Stas' };
+
+  localData.name = 'Stas';
+  localData.age = 31;
+
+  if (localData.id) {
+    putDataId(localData.id, localData)
+      .then(response => {
+        setData(response.data)
+      })
+      .catch(e => console.log(e));
+  }
+}
+
+return <Box
+  sx={{
+    width: '900px',
+    m: '0 auto'
+  }}
+  >
+    <ul>
+      <li>id: {data?.id}</li>
+      <li>name: {data?.name}</li>
+      <li>age: {data?.age}</li>
+    </ul>
+    <Button
+      onClick={changeData}
+      variant='contained'
+      color='error'
+    >
+      Изменить данные
+    </Button>
+  </Box>
 ```
