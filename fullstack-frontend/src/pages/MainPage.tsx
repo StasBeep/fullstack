@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { getCommon } from "../api/controllers/common";
 
 import {
-  Box
+  Box,
+  Button
 } from "@mui/material";
 
 const MainPage = () => {
+  const navigate = useNavigate();
+
   const [data, setData] = React.useState();
 
   useEffect(() => {
@@ -26,6 +30,13 @@ const MainPage = () => {
     {
       data ? data : 'Данные с сервера нет'
     }
+    <Button
+      variant='outlined'
+      color='warning'
+      onClick={() => navigate('/change-backend')}
+    >
+      Change data
+    </Button>
   </Box>
 };
 

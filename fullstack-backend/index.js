@@ -3,6 +3,7 @@ const express = require("express");
 const PORT = process.env.PORT || 3001;
 
 const app = express();
+app.use(express.json());
 
 app.listen(PORT, () => {
 	console.log(`Server starting on port ${PORT}`);
@@ -25,7 +26,7 @@ app.get('/api/data/:id', (req, res) => {
 	const idDataReq = req.params.id
 	console.log('start request: ' + idDataReq);
 
-	if (data.id !== parseInt(idDataReq)) { 
+	if (data.id !== parseInt(idDataReq)) {
 		console.log('No id: ' + idDataReq);
 		return res.status(404).send("Data not found");
 	} else {
@@ -36,21 +37,14 @@ app.get('/api/data/:id', (req, res) => {
 // PUT route for updating data based on ID
 app.put('/api/data/:id', (req, res) => {
 	const id = req.params.id;
-	const updatedData = req.body;
-
-	console.log(req.body);
+	const updatedData = req.body; //! Не сработает без - app.use(express.json());
 
 	// Validate data existence before update
 	if (data.id !== parseInt(id)) {
 		return res.status(404).send("Data not found");
 	}
 
-	// Update data properties using object spread syntax
 	data = { ...data, ...updatedData };
 
-	console.log(data);
-
 	res.json(data);
-
-	console.log(data);
 });

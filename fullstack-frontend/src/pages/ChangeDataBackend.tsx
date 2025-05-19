@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { getDataId, putDataId } from "../api/controllers/common";
 
-import { dataDto } from "../common/data.types";
+import { dataDto } from "../types/common/data.types";
 
 import {
     Box,
@@ -23,7 +23,10 @@ const ChangeDataBackend = () => {
     const changeData = () => {
         let localData = data ? data : { id: 2, age: 30, name: 'Stas' };
 
-        localData.age = 31;
+        localData.name = 'Stas';
+        localData.age = 31
+
+        console.log(localData)
 
         if (localData.id) {
             putDataId(localData.id, localData)

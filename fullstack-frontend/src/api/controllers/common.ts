@@ -1,5 +1,5 @@
 import { $api, config } from "../index";
-import { dataDto } from "../../common/data.types";
+import { dataDto } from "../../types/common/data.types";
 
 export const getCommon = () => {
     return $api.get('/api', { headers: config() });
