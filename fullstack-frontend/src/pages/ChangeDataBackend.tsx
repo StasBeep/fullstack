@@ -12,7 +12,7 @@ const ChangeDataBackend = () => {
     const [data, setData] = React.useState<dataDto>();
 
     useEffect(() => {
-        getDataId()
+        getDataId(1)
             .then((response) => {
                 setData(response.data);
             })

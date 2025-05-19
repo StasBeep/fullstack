@@ -21,9 +21,16 @@ let data = {
 	age: 30
 };
 
-app.get('/api/data/1', (req, res) => {
-	console.log(data);
-	res.json(data);
+app.get('/api/data/:id', (req, res) => {
+	const idDataReq = req.params.id
+	console.log('start request: ' + idDataReq);
+
+	if (data.id !== parseInt(idDataReq)) { 
+		console.log('No id: ' + idDataReq);
+		return res.status(404).send("Data not found");
+	} else {
+		res.json(data);
+	}
 });
 
 // PUT route for updating data based on ID
