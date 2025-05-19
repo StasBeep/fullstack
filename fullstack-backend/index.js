@@ -20,28 +20,31 @@ app.get('/api/data/:id', (req, res) => {
 	const idDataReq = req.params.id;
 	console.log('start request id: ' + idDataReq);
 
-	const dataResponse = data.dataTest.filter((item) => item.id === parseInt(idDataReq));
-
-	console.log(dataResponse);
+	const dataResponse = data.dataTest.find((item) => item.id === parseInt(idDataReq));
 
 	if (!dataResponse) {
 		console.log('No id: ' + idDataReq);
 		return res.status(404).send("Data not found");
 	} else {
-		res.json(dataResponse[0]);
+		res.json(dataResponse);
 	}
 });
 
 app.put('/api/data/:id', (req, res) => {
-	const id = req.params.id;
+	console.log('change data for id: ' + req.params.id);
+	const idDataReq = req.params.id;
 	const updatedData = req.body; //! Не сработает без - app.use(express.json());
 
-	// Validate data existence before update
-	if (data.id !== parseInt(id)) {
+	let indexDataTest = data.dataTest.findIndex((item) => item.id === parseInt(idDataReq));
+
+	console.log(indexDataTest);
+
+	if (indexDataTest === -1) {
+		console.log('No id: ' + idDataReq);
 		return res.status(404).send("Data not found");
+	} else {
+		data.dataTest[indexDataTest] = updatedData;
+		console.log("completed change data");
+		res.json(data.dataTest[indexDataTest]);
 	}
-
-	data = { ...data, ...updatedData };
-
-	res.json(data);
 });
