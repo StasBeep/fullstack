@@ -16,8 +16,8 @@
 
 * `GET` - получить данные
 * `POST` - создать
-* `PUT` - изменить или создать (hard change)
-* `PUTCH` - изменить
+* `PUT` - изменить или создать (hard change, если изменить одно поле - удаляет другие поля)
+* `PUTCH` - изменить (изменить одно поле, не трогает другие поля)
 * `DELETE` - удалить
 
 ### Шпаргалка HTTP-response
@@ -239,7 +239,7 @@ const changeData = () => {
   localData.age = 31;
 
   if (localData.id) {
-    putDataId(localData.id, localData)
+    editDataId(localData.id, localData)
       .then(response => {
         setData(response.data)
       })

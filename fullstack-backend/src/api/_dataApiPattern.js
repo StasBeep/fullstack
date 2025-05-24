@@ -8,7 +8,7 @@ import { searchIndexObjectDataParamId, searchObjectDataParamId } from "../helper
 
 export const dataApiPattern = (app) => {
 
-    //* get-запрос
+    //* get-запрос по id
     app.get('/api/data/:id', (req, res) => {
         const idDataReq = req.params.id;
         console.log('start request id: ' + idDataReq);
@@ -22,6 +22,26 @@ export const dataApiPattern = (app) => {
             res.json(dataResponse);
         }
     });
+
+    //* post-запрос
+    app.post('/api/data/', (req, res) => {
+        console.log('create new element ...');
+
+        const idNewData = data.dataTest[data.dataTest.length - 1].id + 1;
+        const crearedData = req.body;
+
+        data.dataTest.push({
+            id: idNewData,
+            name: crearedData.name,
+            age: crearedData.age
+        });
+
+        updateJsonFile('data.json', data);
+
+        console.log('created compled')
+
+        return res.json(data.dataTest[data.dataTest.length - 1]);
+    })
 
     //* put-запрос
     app.put('/api/data/:id', (req, res) => {

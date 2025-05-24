@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { getDataId, putDataId } from "../api/controllers/common";
+import { getDataId, editDataId } from "../api/controllers/common";
 
 import { dataDto } from "../types/common/data.types";
 
@@ -8,6 +8,7 @@ import {
     Box,
     Button
 } from "@mui/material";
+import CreateEditElement from "../components/CreateEditElement";
 
 const ChangeDataBackend = () => {
     const [data, setData] = React.useState<dataDto>();
@@ -27,7 +28,7 @@ const ChangeDataBackend = () => {
         localData.age = 31;
 
         if (localData.id) {
-            putDataId(localData.id, localData)
+            editDataId(localData.id, localData)
                 .then(response => {
                     setData(response.data)
                 })
@@ -53,6 +54,7 @@ const ChangeDataBackend = () => {
         >
             Изменить данные
         </Button>
+        <CreateEditElement />
     </Box>
 }
 

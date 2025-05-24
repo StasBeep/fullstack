@@ -9,6 +9,10 @@ export const getDataId = (id: number) => {
     return $api.get(`/api/data/${id}`, { headers: config() });
 }
 
-export const putDataId = (id: number, body: dataDto) => {
+export const createData = (body: dataDto) => {
+    return $api.post(`/api/data/`, body, { headers: config() });
+}
+
+export const editDataId = (id: number, body: dataDto) => {
     return $api.put(`/api/data/${id}`, body, { headers: config() });
 }
