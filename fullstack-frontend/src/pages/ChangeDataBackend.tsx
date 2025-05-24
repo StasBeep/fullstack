@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { getData } from "../api/controllers/common";
 
@@ -13,6 +14,8 @@ import {
 } from "@mui/material";
 
 const ChangeDataBackend = () => {
+    const navigate = useNavigate();
+
     const [data, setData] = React.useState<dataDto[]>();
 
     useEffect(() => {
@@ -32,6 +35,7 @@ const ChangeDataBackend = () => {
         <Button
             variant='contained'
             color='success'
+            onClick={() => navigate('/change-backend/new/')}
             sx={{
                 my: 1
             }}
@@ -75,6 +79,7 @@ const ChangeDataBackend = () => {
                             <Button
                                 color='info'
                                 variant='contained'
+                                onClick={() => navigate(`/change-backend/edit/${item.id}`)}
                             >
                                 Изменить
                             </Button>
