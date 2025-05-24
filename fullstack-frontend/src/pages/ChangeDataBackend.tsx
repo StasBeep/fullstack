@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { getData } from "../api/controllers/common";
+import { deleteDataId, getData } from "../api/controllers/common";
 
 import { dataDto } from "../types/common/data.types";
 
@@ -25,6 +25,19 @@ const ChangeDataBackend = () => {
             })
             .catch(e => console.log(e));
     }, []);
+
+    const deleteRecord = (idRecord: number) => {
+        deleteDataId(idRecord)
+            .then((response) => {
+                console.log(response);
+                getData()
+                    .then((response) => {
+                        setData(response.data);
+                    })
+                    .catch(e => console.log(e));
+            })
+            .catch((e) => console.log(e));
+    }
 
     return <Box
         sx={{
@@ -86,6 +99,7 @@ const ChangeDataBackend = () => {
                             <Button
                                 color='error'
                                 variant='contained'
+                                onClick={() => deleteRecord(Number(item.id))}
                                 sx={{
                                     mt: 1
                                 }}

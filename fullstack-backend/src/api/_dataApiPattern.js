@@ -69,6 +69,15 @@ export const dataApiPattern = (app) => {
 
     //* delete-запрос
     app.delete('/api/data/:id', (req, res) => {
+        console.log(`Delete ${req.params.id} ...`);
 
+        const filterArray = data.dataTest.filter((item) => item.id !== +req.params.id);
+
+        data.dataTest = filterArray;
+
+        updateJsonFile('data.json', data);
+
+        console.log(`Delete ${req.params.id} completed`);
+        return res.status(204).send(`Delete ${req.params.id} completed`);
     })
 }

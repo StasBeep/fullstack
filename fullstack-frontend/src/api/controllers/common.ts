@@ -20,3 +20,7 @@ export const createData = (body: dataDto) => {
 export const editDataId = (id: number, body: dataDto) => {
     return $api.put(`/api/data/${id}`, body, { headers: config() });
 }
+
+export const deleteDataId = (id: number) => {
+    return $api.delete(`/api/data/${id}`, { headers: config() });
+}
