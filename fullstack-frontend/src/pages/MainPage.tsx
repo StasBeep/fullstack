@@ -36,7 +36,7 @@ const MainPage = () => {
       }}
     >
       {
-        data ? data : 'Данные с сервера нет'
+        data ? data : 'Данных с сервера нет'
       }
     </Typography>
     <Button
