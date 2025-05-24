@@ -8,6 +8,11 @@ import { searchIndexObjectDataParamId, searchObjectDataParamId } from "../helper
 
 export const dataApiPattern = (app) => {
 
+    //* get-запрос data
+    app.get('/api/data/', (req, res) => {
+        return res.json(data.dataTest);
+    });
+
     //* get-запрос по id
     app.get('/api/data/:id', (req, res) => {
         const idDataReq = req.params.id;
@@ -61,4 +66,9 @@ export const dataApiPattern = (app) => {
             console.log("completed change data");
         }
     });
+
+    //* delete-запрос
+    app.delete('/api/data/:id', (req, res) => {
+
+    })
 }

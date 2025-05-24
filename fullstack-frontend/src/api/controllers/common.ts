@@ -5,6 +5,10 @@ export const getCommon = () => {
     return $api.get('/api', { headers: config() });
 }
 
+export const getData = () => {
+    return $api.get('/api/data/', { headers: config() });
+}
+
 export const getDataId = (id: number) => {
     return $api.get(`/api/data/${id}`, { headers: config() });
 }

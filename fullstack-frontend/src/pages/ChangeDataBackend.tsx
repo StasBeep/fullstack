@@ -1,40 +1,27 @@
 import React, { useEffect } from "react";
 
-import { getDataId, editDataId } from "../api/controllers/common";
+import { getData } from "../api/controllers/common";
 
 import { dataDto } from "../types/common/data.types";
 
 import {
     Box,
-    Button
+    Button,
+    List,
+    ListItem,
+    Typography
 } from "@mui/material";
-import CreateEditElement from "../components/CreateEditElement";
 
 const ChangeDataBackend = () => {
-    const [data, setData] = React.useState<dataDto>();
+    const [data, setData] = React.useState<dataDto[]>();
 
     useEffect(() => {
-        getDataId(1)
+        getData()
             .then((response) => {
                 setData(response.data);
             })
             .catch(e => console.log(e));
     }, []);
-
-    const changeData = () => {
-        let localData = data ? data : { id: 2, age: 30, name: 'Stas' };
-
-        localData.name = 'Stas';
-        localData.age = 31;
-
-        if (localData.id) {
-            editDataId(localData.id, localData)
-                .then(response => {
-                    setData(response.data)
-                })
-                .catch(e => console.log(e));
-        }
-    }
 
     return <Box
         sx={{
@@ -42,19 +29,69 @@ const ChangeDataBackend = () => {
             m: '0 auto'
         }}
     >
-        <ul>
-            <li>id: {data?.id}</li>
-            <li>name: {data?.name}</li>
-            <li>age: {data?.age}</li>
-        </ul>
         <Button
-            onClick={changeData}
             variant='contained'
-            color='error'
+            color='success'
+            sx={{
+                my: 1
+            }}
         >
-            Изменить данные
+            Создать новую запись
         </Button>
-        <CreateEditElement />
+        <List>
+            {
+                data?.map((item, key) => (
+                    <ListItem
+                        key={`listItem-${key}`}
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            border: '1px solid #007dea'
+                        }}
+                    >
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column'
+                            }}
+                        >
+                            <Typography
+                                component={'h3'}
+                            >
+                                Имя: {item.name}
+                            </Typography>
+                            <Typography
+                                component={'h4'}
+                            >
+                                Возраст: {item.age}
+                            </Typography>
+                        </Box>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                flexDirection: 'column'
+                            }}
+                        >
+                            <Button
+                                color='info'
+                                variant='contained'
+                            >
+                                Изменить
+                            </Button>
+                            <Button
+                                color='error'
+                                variant='contained'
+                                sx={{
+                                    mt: 1
+                                }}
+                            >
+                                Удалить
+                            </Button>
+                        </Box>
+                    </ListItem>
+                ))
+            }
+        </List>
     </Box>
 }
 

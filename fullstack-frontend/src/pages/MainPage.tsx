@@ -5,7 +5,8 @@ import { getCommon } from "../api/controllers/common";
 
 import {
   Box,
-  Button
+  Button,
+  Typography
 } from "@mui/material";
 
 const MainPage = () => {
@@ -27,9 +28,17 @@ const MainPage = () => {
       m: '0 auto'
     }}
   >
-    {
-      data ? data : 'Данные с сервера нет'
-    }
+    <Typography
+      component={'h2'}
+      sx={{
+        fontSize: '22px',
+        my: 2
+      }}
+    >
+      {
+        data ? data : 'Данные с сервера нет'
+      }
+    </Typography>
     <Button
       variant='outlined'
       color='warning'
