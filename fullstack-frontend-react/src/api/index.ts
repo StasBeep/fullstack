@@ -37,20 +37,20 @@ $api.interceptors.response.use(function (response) {
                 }
                 break;
             case 5:
-                if (error.response.status >= 500 && error.response.status <= 505) {
-                    window.location.replace(`/error?code=${error.response.status}`);
-                }
+                // if (error.response.status >= 500 && error.response.status <= 505) {
+                //     window.location.replace(`/error?code=${error.response.status}`);
+                // }
                 break;
             default:
-                window.location.replace("/error");
+                // window.location.replace("/error");
                 break;
         }
     }
 
-    if (error.response == null) {
-        window.location.replace("/error");
-        return;
-    }
+    // if (error.response == null) {
+    //     window.location.replace("/error");
+    //     return;
+    // }
 
     // Любые коды состояния, выходящие за пределы диапазона 2xx, вызывают срабатывание этой функции
     // Здесь можете сделать что-то с ошибкой ответа

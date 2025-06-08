@@ -20,6 +20,7 @@ const MainPage = () => {
         console.log(response);
         setData(response.data.message);
       })
+      .catch((e) => console.log(e));
   }, []);
 
   return <Box
@@ -45,6 +46,13 @@ const MainPage = () => {
       onClick={() => navigate('/change-backend')}
     >
       Change data
+    </Button>
+    <Button
+      variant='outlined'
+      color='warning'
+      onClick={() => navigate('/mobx')}
+    >
+      Mobx
     </Button>
   </Box>
 };
