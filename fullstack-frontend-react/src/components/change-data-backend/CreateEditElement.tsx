@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { createData, editDataId, getDataId } from "../../api/controllers/common";
+import { createData, editDataId, getDataId } from "../../api/controllers/common-contreller";
 
 import {
     Box,

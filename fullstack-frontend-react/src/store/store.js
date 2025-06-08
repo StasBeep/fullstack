@@ -1,9 +1,8 @@
-import { v4 as uuiddv4 } from 'uuid'; // uuid для создания уникального идентификатора
 import { makeAutoObservable } from 'mobx';
 import { createContext } from "react";
+import { getTodo } from '../api/controllers/todo-controller';
 
 class Todo {
-    id = uuiddv4();
     title = '';
     completed = false;
 
@@ -19,6 +18,19 @@ class Todo {
 
 class TodoStore {
     todos = [];
+    loading = true;
+
+    async fetchTodo() {
+        await getTodo()
+            .then((response) => {
+                this.loading = false;
+                this.todos = response.data;
+            })
+            .catch((e) => {
+                console.log(e);
+                this.loading = true;
+            })
+    }
 
     constructor() {
         makeAutoObservable(this);

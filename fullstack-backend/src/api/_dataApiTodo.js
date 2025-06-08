@@ -6,15 +6,15 @@ const data = require('../../data/data.json');
 import { updateJsonFile } from "../helpers/_updateJsonFiles.js";
 import { searchIndexObjectDataParamId, searchObjectDataParamId } from "../helpers/_searchDatabase.js";
 
-export const dataApiPattern = (app) => {
+export const dataApiTodo = (app) => {
 
     //* get-запрос data
-    app.get('/api/data/', (req, res) => {
+    app.get('/api/data-todo/', (req, res) => {
         return res.json(data.todoData);
     });
 
     //* get-запрос по id
-    app.get('/api/data/:id', (req, res) => {
+    app.get('/api/data-todo/:id', (req, res) => {
         const idDataReq = req.params.id;
         console.log('start request id: ' + idDataReq);
 
@@ -29,7 +29,7 @@ export const dataApiPattern = (app) => {
     });
 
     //* post-запрос
-    app.post('/api/data/', (req, res) => {
+    app.post('/api/data-todo/', (req, res) => {
         console.log('create new element ...');
 
         const idNewData = data.todoData[data.todoData.length - 1].id + 1;
@@ -49,7 +49,7 @@ export const dataApiPattern = (app) => {
     })
 
     //* put-запрос
-    app.put('/api/data/:id', (req, res) => {
+    app.put('/api/data-todo/:id', (req, res) => {
         console.log('change data for id: ' + req.params.id);
         const idDataReq = req.params.id;
         const updatedData = req.body; //! Не сработает без - app.use(express.json());
@@ -68,7 +68,7 @@ export const dataApiPattern = (app) => {
     });
 
     //* delete-запрос
-    app.delete('/api/data/:id', (req, res) => {
+    app.delete('/api/data-todo/:id', (req, res) => {
         console.log(`Delete ${req.params.id} ...`);
 
         const filterArray = data.todoData.filter((item) => item.id !== +req.params.id);

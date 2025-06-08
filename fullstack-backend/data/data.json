@@ -17,6 +17,10 @@
         }
     ],
     "todoData": [
-
+        {
+            "id": 1,
+            "title": "Rea",
+            "checked": false
+        }
     ]
 }
