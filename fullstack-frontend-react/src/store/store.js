@@ -1,18 +1,14 @@
 import { makeAutoObservable } from 'mobx';
 import { createContext } from "react";
-import { getTodo } from '../api/controllers/todo-controller';
+import { createDataTodo, getTodo, deleteDataTodoId, editDataTodoId } from '../api/controllers/todo-controller';
 
 class Todo {
     title = '';
-    completed = false;
+    checked = false;
 
     constructor(title) {
         makeAutoObservable(this);
         this.title = title;
-    }
-
-    toggleCompleted() {
-        this.completed = !this.completed;
     }
 }
 
@@ -37,11 +33,33 @@ class TodoStore {
     }
 
     addTodo(title) {
-        this.todos.push(new Todo(title));
+        const newElement = new Todo(title);
+
+        createDataTodo(newElement)
+            .then(() => {
+                this.todos.push(new Todo(title));
+            })
+            .catch((e) => console.log(e));
     }
 
     removeTodo(id) {
-        this.todos = this.todos.filter((todo) => todo.id !== id);
+        deleteDataTodoId(id)
+            .then(() => {
+                this.todos = this.todos.filter((todo) => todo.id !== id);
+            })
+            .catch((e) => console.log(e));
+    }
+
+    toggleCompleted(id) {
+        let element = this.todos.filter((todo) => todo.id === id);
+
+        element[0].checked = !element[0].checked;
+
+        editDataTodoId(id, element[0])
+            .then((response) => {
+                this.checked = response.data.checked;
+            })
+            .catch((e) => console.log(e));
     }
 }
 

@@ -7,7 +7,7 @@ const WatchTodo = observer(() => {
 
     return <ul>
         {store.todos.map((item) => (
-            <li>
+            <li key={item.title}>
                 {item.title}
             </li>
         ))}

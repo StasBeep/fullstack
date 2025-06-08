@@ -10,8 +10,8 @@ const ItemsTodo = observer(({ todo }) => {
     return <Box>
         <input
             type="checkbox"
-            checked={todo.completed}
-            onChange={() => todo.toggleCompleted()}
+            checked={todo.checked}
+            onChange={() => store.toggleCompleted(todo.id)}
             style={{
                 marginRight: '8px'
             }}
