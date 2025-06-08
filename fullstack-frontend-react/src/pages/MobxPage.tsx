@@ -2,9 +2,13 @@ import { useContext } from "react";
 import { observer } from "mobx-react";
 import { TodoStoreContext } from "../store/store";
 
-import { Box } from "@mui/material";
+import {
+    Box
+} from "@mui/material";
+
 import CreateTodo from "../components/mobx-page/CreateTodo";
 import ItemsTodo from "../components/mobx-page/ItemsTodo";
+import WatchTodo from "../components/mobx-page/WatchTodo";
 
 const MobxPage = observer(() => {
     const store = useContext(TodoStoreContext);
@@ -21,6 +25,7 @@ const MobxPage = observer(() => {
                 <ItemsTodo key={todo.id} todo={todo} />
             ))}
         </Box>
+        <WatchTodo />
     </Box>
 });
 
