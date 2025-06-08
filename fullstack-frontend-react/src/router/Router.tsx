@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import MainPage from '../pages/MainPage';
 import ChangeDataBackend from '../pages/ChangeDataBackend';
-import CreateEditElement from '../components/CreateEditElement';
+import CreateEditElement from '../components/change-data-backend/CreateEditElement';
 import MobxPage from '../pages/MobxPage';
 
 const Router = () => {
