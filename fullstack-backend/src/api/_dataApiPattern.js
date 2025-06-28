@@ -32,7 +32,13 @@ export const dataApiPattern = (app) => {
     app.post('/api/data/', (req, res) => {
         console.log('create new element ...');
 
-        const idNewData = data.dataTest[data.dataTest.length - 1].id + 1;
+        let idNewData = 0;
+
+        if (data.dataTest.length !== 0) {
+            idNewData = data.dataTest[data.dataTest.length - 1].id + 1;
+        }
+
+        console.log(idNewData);
         const crearedData = req.body;
 
         data.dataTest.push({
@@ -60,7 +66,13 @@ export const dataApiPattern = (app) => {
             console.log('No id: ' + idDataReq);
             return res.status(404).send("Data not found");
         } else {
-            data.dataTest[indexDataTest] = updatedData;
+            const newElement = {
+                id: Number(idDataReq),
+                name: updatedData.name,
+                age: updatedData.age
+            }
+
+            data.dataTest[indexDataTest] = newElement;
             updateJsonFile('data.json', data);
             res.json(data.dataTest[indexDataTest]);
             console.log("completed change data");
