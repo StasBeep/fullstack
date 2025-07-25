@@ -1,9 +1,10 @@
 import { makeObservable, observable, action, computed } from 'mobx';
+import { RootStore } from '../RootStore';
 
-class CounterStore {
+export class CounterStore {
     count = 0;
 
-    constructor() {
+    constructor(private rootStore: RootStore) {
         makeObservable(this, {
             count: observable, // отслеживание переменной
             increment: action, // метод изменения данных
@@ -22,8 +23,12 @@ class CounterStore {
 
     get doubleCount() { // используется для просмотра количества элементов в массиве, или другие данные, которые пересчитываются на основе переменных используемые в class
         return this.count * 2;
-    }
-}
+    };
 
-const counterStore = new CounterStore();
-export default counterStore;
+    // Пример использования другого хранилища
+    resetIfTestDataEmpty = () => {
+        if (this.rootStore.testStore.dataLength === 0) {
+            this.count = 0;
+        }
+    };
+}

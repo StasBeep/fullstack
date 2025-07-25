@@ -1,13 +1,14 @@
 import { makeObservable, observable, action, runInAction, computed } from 'mobx';
 import { testData } from '../../api/controllers/common-controller';
 import { testDataDto } from '../../types/testData';
+import { RootStore } from '../RootStore';
 
-class TestStore {
+export class TestStore {
     testData: testDataDto[] = [];
     loading = false;
     error = false;
 
-    constructor() {
+    constructor(private rootStore: RootStore) {
         makeObservable(this, {
             testData: observable,
             loading: observable,
@@ -39,7 +40,9 @@ class TestStore {
     get dataLength() {
         return this.testData.length;
     }
-}
 
-const testStore = new TestStore();
-export default testStore;
+    // Пример использования другого хранилища
+    get countFromCounterStore() {
+        return this.rootStore.counterStore.count;
+    }
+}

@@ -1,9 +1,11 @@
 import { observer } from "mobx-react";
-import counterStore from "../../stores/store/CounterStore";
-import testStore from "../../stores/store/TestStore";
 import { useEffect } from "react";
+import { useStores } from "../../stores/RootStoreContext";
 
 const Mobx = observer(() => {
+    // Получаем хранилища через контекст
+    const { testStore, counterStore } = useStores();
+
     useEffect(() => {
         testStore.fetchData()
     }, [])
