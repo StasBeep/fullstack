@@ -637,6 +637,12 @@ useEffect(() => {
 
 Смотрим файл `MainPage.tsx` для работы с вытаскиванием данных с сервера
 
+23. Создаём папки
+ - `components` в `components`
+ - `layouts` в `components`
+ - `types`
+ - `store`
+
 Для запуска сервера frontend:
 
 1. Перейти в папку frontend (в моём случае frontend-react) `cd frontend-react`
