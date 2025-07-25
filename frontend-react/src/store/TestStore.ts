@@ -34,19 +34,6 @@ class TestStore {
                     this.loading = false;
                 })
             })
-        // try {
-        //     const response = await fetch('https://api.example.com/users');
-        //     const data = await response.json();
-
-        //     runInAction(() => {
-        //         this.users = data;
-        //         this.loading = false;
-        //     });
-        // } catch (error) {
-        //     runInAction(() => {
-        //         this.loading = false;
-        //     });
-        // }
     };
 
     get dataLength() {
