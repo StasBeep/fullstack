@@ -38,7 +38,7 @@
 1. Заходим в папку backend
 
 ```cmd
-    cd fullstack-backend
+    cd backend-express
 ```
 
 2. Устанавливаем зависимости
@@ -53,10 +53,10 @@
     npm run start
 ```
 
-4. Открываем новый терминал заходим в папку frontend
+4. Открываем новый терминал заходим в папку frontend (react или vue)
 
 ```cmd
-    cd fullstack-frontend
+    cd frontend-_______(react, vue)
 ```
 
 5. Устанавливаем зависимости
@@ -79,7 +79,7 @@
 npm init -y
 ```
 
-Переносим `package.json` в новую папку с работой backend. В моём случае это папка `fullstack-backend`
+Переносим `package.json` в новую папку с работой backend. В моём случае это папка `backend-express`
 
 Устанавливаем пакет `express` в `package.json` бека, для работы сервера
 
@@ -124,7 +124,7 @@ app.listen(PORT, () => {
 npm run start
 ```
 
-Обратите внимание, что отработки данной команды вы должны находиться в папке бека `cd fullstack-backend`
+Обратите внимание, что отработки данной команды вы должны находиться в папке бека `cd backend-express`
 
 Правильный запуск backend-сервера выглядит:
 
@@ -194,7 +194,7 @@ useEffect(() => {
 
 Для запуска сервера frontend:
 
-1. Перейти в папку frontend (в моём случае fullstack-frontend) `cd fullstack-frontend`
+1. Перейти в папку frontend (в моём случае frontend-react) `cd frontend-react`
 2. Ввести команду
 
 ```cmd
