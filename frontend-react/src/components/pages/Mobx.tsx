@@ -6,6 +6,7 @@ const Mobx = observer(() => {
         <h1>{counterStore.count}</h1>
         <button onClick={counterStore.increment}>+</button>
         <button onClick={counterStore.decrement}>-</button>
+        <h2>{counterStore.doubleCount}</h2>
     </div>
 });
 
