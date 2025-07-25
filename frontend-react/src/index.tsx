@@ -1,16 +1,18 @@
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import { Provider } from 'mobx-react';
-import { todoStore } from './store/store';
+import { RootStoreContext } from './stores/RootStoreContext';
+import rootStore from './stores/RootStore';
+import App from './components/App';
+import './styles/index.scss';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 
-
 root.render(
-  <Provider todoStore={todoStore}>
-    <App />
-  </Provider>
+    <React.StrictMode>
+        <RootStoreContext.Provider value={rootStore}>
+            <App />
+        </RootStoreContext.Provider>
+    </React.StrictMode>
 );
