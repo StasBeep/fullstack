@@ -808,3 +808,42 @@ npm install mobx mobx-react
  - Reactions - автоматические реакции на изменения состояния
 
 3. Создаём `store.ts` в папке `store`
+```
+import { makeObservable, observable, action } from 'mobx';
+
+class CounterStore {
+    count = 0;
+
+    constructor() {
+        makeObservable(this, {
+            count: observable, // отслеживание переменной
+            increment: action, // метод изменения данных
+            decrement: action
+        });
+    }
+
+    increment = () => {
+        this.count++;
+    };
+
+    decrement = () => {
+        this.count--;
+    };
+}
+
+const counterStore = new CounterStore();
+export default counterStore;
+```
+
+4. Обернуть `react-компонент` в `observer`, чтобы взаимодействовать с данными
+```
+import { observer } from "mobx-react";
+
+const Mobx = observer(() => {
+    return <div>
+
+    </div>
+});
+
+export default Mobx;
+```
