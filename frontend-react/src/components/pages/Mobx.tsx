@@ -1,6 +1,6 @@
 import { observer } from "mobx-react";
-import counterStore from "../../store/CounterStore";
-import testStore from "../../store/TestStore";
+import counterStore from "../../stores/store/CounterStore";
+import testStore from "../../stores/store/TestStore";
 import { useEffect } from "react";
 
 const Mobx = observer(() => {
@@ -28,7 +28,7 @@ const Mobx = observer(() => {
                             ))
                         }
                     </ol>
-                    {testStore.error ? null :testStore.dataLength}
+                    {testStore.error ? null : testStore.dataLength}
                 </>
             )
         }
