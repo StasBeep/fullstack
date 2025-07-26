@@ -37,37 +37,37 @@
 
 1. Заходим в папку backend
 
-```cmd
+```bash
     cd backend-express
 ```
 
 2. Устанавливаем зависимости
 
-```cmd
+```bash
     npm i
 ```
 
 3. Запускаем сервер backend
 
-```cmd
+```bash
     npm run start
 ```
 
 4. Открываем новый терминал заходим в папку frontend (react или vue)
 
-```cmd
+```bash
     cd frontend-_______(react, vue)
 ```
 
 5. Устанавливаем зависимости
 
-```cmd
+```bash
     npm i
 ```
 
 6. Запускаем сервер frontend
 
-```cmd
+```bash
     npm run start
 ```
 
@@ -75,7 +75,7 @@
 
 Создаём `package.json` в корне репозитория
 
-```cmd
+```bash
 npm init -y
 ```
 
@@ -83,7 +83,7 @@ npm init -y
 
 Устанавливаем пакет `express` в `package.json` бека, для работы сервера
 
-```cmd
+```bash
 npm i express
 ```
 
@@ -120,7 +120,7 @@ app.listen(PORT, () => {
 
 Запускаем сервер командой
 
-```cmd
+```bash
 npm run start
 ```
 
@@ -154,43 +154,43 @@ app.get("/api", (req, res) => {
 
 1. запустите:
 
-```cmd
+```bash
 npm init -y
 ```
 
 или, если нужна ручная настройка `package.json`
 
-```
+```bash
 npm init
 ```
 
 2. Устанавливаем зависимости react
 
-```
+```bash
 npm install react react-dom
 ```
 
 3. Typescript
 
-```
+```bash
 npm install --save-dev typescript @types/react @types/react-dom
 ```
 
 4. Webpack
 
-```
+```bash
 npm install --save-dev webpack webpack-cli webpack-dev-server html-webpack-plugin
 ```
 
 5. Loaders
 
-```
+```bash
 npm install --save-dev ts-loader css-loader style-loader file-loader
 ```
 
 6. Создаём файл tsconfig.json в корне репозитория с содержимым:
 
-```
+```json
 {
     "compilerOptions": {
         "target": "es2016",
@@ -212,7 +212,7 @@ npm install --save-dev ts-loader css-loader style-loader file-loader
 
 7. Создаём файл `webpack.config.ts`:
 
-```
+```ts
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // Минимзация файлов css
@@ -346,7 +346,7 @@ module.exports = {
 
 8. Создаём файл `index.html` в папке `public`:
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -362,7 +362,7 @@ module.exports = {
 
 9. В папке `src` -> файл `index.tsx`:
 
-```
+```tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/App';
@@ -383,7 +383,7 @@ root.render(
 
 10. В папке `src` -> `components` -> файл `App.tsx`
 
-```
+```tsx
 import { BrowserRouter } from "react-router-dom";
 import Router from "../router/Router";
 
@@ -400,13 +400,13 @@ export default App;
 
 и устанавливаем `router`
 
-```
+```bash
 npm install react-router-dom --save
 ```
 
 создаём папку `router` -> с файлом `Router.tsx`
 
-```
+```tsx
 import { Route, Routes } from 'react-router-dom';
 
 import MainPage from '../components/pages/MainPage';
@@ -424,7 +424,7 @@ export default Router;
 
 11. В папке `components` -> создаём папку `pages` -> файл `MainPage.tsx`
 
-```
+```tsx
 const MainPage = () => {
     return <div>
         Main Page
@@ -438,7 +438,7 @@ export default MainPage;
 
 13. В папке `src` -> папку `styles` -> файл `index.scss` или `index.css`:
 
-```
+```css
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -452,7 +452,7 @@ h1 {
 
 14. `package.json` добиваем:
 
-```
+```bash
 ...
 "scripts": {
     "start": "webpack serve --mode development",
@@ -464,43 +464,43 @@ h1 {
 
 15. Используем `ts` в `webpack`
 
-```
+```bash
 npm install --save-dev typescript ts-node
 ```
 
 ---
 
-```
+```bash
 npm install --save-dev @types/node
 ```
 
 16. Устанавливаем plugin для улучшения webpack
 
-```
+```bash
 npm install copy-webpack-plugin --save-dev
 ```
 
 ---
 
-```
+```bash
 npm i mini-css-extract-plugin --save-dev
 ```
 
 ---
 
-```
+```bash
 npm i webpack-bundle-analyzer --save-dev
 ```
 
 ---
 
-```
+```bash
 npm i clean-webpack-plugin --save-dev
 ```
 
 ---
 
-```
+```bash
 npm install sass-loader sass webpack --save-dev
 ```
 
@@ -508,7 +508,7 @@ npm install sass-loader sass webpack --save-dev
 
 18. Создаём в корне репозитория файлы: `.env` и ` .env.production`
 
-```
+```bash
 REACT_APP_BASEURL=http://localhost:3001
 ```
 
@@ -516,32 +516,32 @@ REACT_APP_BASEURL=http://localhost:3001
 
 устанавливаем работу с `.env` в webpack
 
-```
+```bash
 npm install dotenv-webpack --save-dev
 ```
 
 19. Запускаем сборку
     Для разработки
 
-```
+```bash
 npm run start --dev
 ```
 
 Для production
 
-```
+```bash
 npm run start
 ```
 
 20. Устанавливаем `axios` для работы с api
 
-```
+```bash
 npm install axios
 ```
 
 21. Создаём файл в `src` -> `api` -> `index.ts`
 
-```
+```tsx
 import axios from "axios";
 
 export const $api = axios.create({
@@ -604,7 +604,7 @@ $api.interceptors.response.use(function (response) {
 
 22. В папке `api` создаём папку `controllers` -> файл `___-controller.ts`, в моём случае `common-controller.ts`
 
-```
+```tsx
 import { $api, config } from "../index";
 
 export const getCommon = () => {
@@ -629,7 +629,7 @@ useEffect(() => {
 - Запрос через `axios` не сработает из-за `cors`, нужно отключить cors в браузере и пользоваться
   -Для отключения `cors` надо в ярлыке браузере Google через свойство в поле `объект` вставить после расположения строки:
 
-```
+```bash
 --disable-web-security --user-data-dir="C:\Users\ndecarteret121\AppData\Local\Google\Chrome\Testing"
 ```
 
@@ -651,13 +651,13 @@ useEffect(() => {
 1. Перейти в папку frontend (в моём случае frontend-react) `cd frontend-react`
 2. Ввести команду
 
-```cmd
+```bash
 npm i
 ```
 
 3. Запуск сервера frontend
 
-```cmd
+```bash
 npm run start -dev
 ```
 
@@ -665,7 +665,7 @@ npm run start -dev
 
 Для изменения данных по параметру id добавляем в сервер backend строки
 
-```JavaScript
+```js
 app.use(express.json()); // работа с данными передаваемые с фронта
 
 app.put('/api/data/:id', (req, res) => {
@@ -684,7 +684,7 @@ app.put('/api/data/:id', (req, res) => {
 
 Запрос на изменение данных по кнопке со стороны frontend
 
-```JavaScript
+```js
 const [data, setData] = React.useState<dataDto>(); // dataDto тип передаваемых / получаемых данных
 
 const changeData = () => {
@@ -757,7 +757,7 @@ const express = require("express");
 
 Установить `nodemon` - для этого ввести в командную строку:
 
-```cmd
+```bash
 npm install --save-dev nodemon
 ```
 
@@ -1068,6 +1068,95 @@ const Mobx = observer(() => {
 export default Mobx;
 ```
 
+В файлах `CounterStore.ts` `TestStore.ts` тоже есть небольшие изменения и можно комбинировать между несколькими `store`
+```tsx
+import { makeObservable, observable, action, computed } from 'mobx';
+import { RootStore } from '../RootStore';
+
+export class CounterStore {
+    count = 0;
+
+    constructor(private rootStore: RootStore) { // добавляется зависимость
+        makeObservable(this, {
+            count: observable, // отслеживание переменной
+            increment: action, // метод изменения данных
+            decrement: action,
+            doubleCount: computed // производные значения (просмотр) на основе данных, хранящихся в class
+        });
+    }
+
+    increment = () => {
+        this.count++;
+    };
+
+    decrement = () => {
+        this.count--;
+    };
+
+    get doubleCount() { // используется для просмотра количества элементов в массиве, или другие данные, которые пересчитываются на основе переменных используемые в class
+        return this.count * 2;
+    };
+
+    // Пример использования другого хранилища
+    resetIfTestDataEmpty = () => {
+        if (this.rootStore.testStore.dataLength === 0) {
+            this.count = 0;
+        }
+    };
+}
+```
+
+```tsx
+import { makeObservable, observable, action, runInAction, computed } from 'mobx';
+import { testData } from '../../api/controllers/common-controller';
+import { testDataDto } from '../../types/testData';
+import { RootStore } from '../RootStore';
+
+export class TestStore {
+    testData: testDataDto[] = [];
+    loading = false;
+    error = false;
+
+    constructor(private rootStore: RootStore) { // добавляется зависимость
+        makeObservable(this, {
+            testData: observable,
+            loading: observable,
+            error: observable,
+            dataLength: computed,
+            fetchData: action
+        });
+    }
+
+    fetchData = async () => {
+        this.loading = true;
+
+        await testData()
+            .then((response) => {
+                runInAction(() => {
+                    this.testData = response.data;
+                    this.loading = false;
+                })
+            })
+            .catch((error) => {
+                console.log(error);
+                runInAction(() => {
+                    this.error = true;
+                    this.loading = false;
+                })
+            })
+    };
+
+    get dataLength() {
+        return this.testData.length;
+    }
+
+    // Пример использования другого хранилища
+    get countFromCounterStore() {
+        return this.rootStore.counterStore.count;
+    }
+}
+```
+
 9. Реакции `Mobx`
 * autorun
 Выполняет функцию сразу и при каждом изменении зависимостей:
@@ -1079,10 +1168,10 @@ autorun(() => {
 });
 ```
 - Используйте для логирования, аналитики или синхронизации с localStorage.
----tsx
+---
 * reaction
 Запускает эффект только при изменении конкретных данных:
-```
+```tsx
 import { reaction } from 'mobx';
 
 reaction(
@@ -1093,7 +1182,7 @@ reaction(
 );
 ```
 - Используйте для условных действий (например, уведомлений).
----tsx
+---
 * when
 Выполняет действие один раз при выполнении условия:
 ```tsx
