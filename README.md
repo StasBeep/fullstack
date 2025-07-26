@@ -803,7 +803,7 @@ fs.writeFileSync("data.json", JSON.stringify(data, null, 4)); // Обновле�
 
 1. Установите MobX и React интеграцию
 
-```
+```bash
 npm install mobx mobx-react
 ```
 
@@ -815,7 +815,7 @@ npm install mobx mobx-react
 - Reactions - автоматические реакции на изменения состояния
 
 3. Создаём `CouterStore.ts` в папке `stores` -> `store`
-```
+```tsx
 import { makeObservable, observable, action } from 'mobx';
 
 class CounterStore {
@@ -844,7 +844,7 @@ export default counterStore;
 
 4. Обернуть `react-компонент` в `observer`, чтобы взаимодействовать с данными
 
-```
+```tsx
 import { observer } from "mobx-react";
 
 const Mobx = observer(() => {
@@ -858,7 +858,7 @@ export default Mobx;
 
 5. Данные можно изменять, и смотреть
 
-```
+```tsx
 import counterStore from "../../stores/store/CounterStore";
 
 import { observer } from "mobx-react";
@@ -876,7 +876,7 @@ export default Mobx;
 ```
 
 6. Создаём `TestStore.ts` в папке `stores` -> `store`
-```
+```tsx
 import { makeObservable, observable, action, runInAction, computed } from 'mobx';
 import { testData } from '../../api/controllers/common-controller';
 import { testDataDto } from '../../types/testData';
@@ -922,7 +922,7 @@ export class TestStore {
 ```
 
 7. Данные можно просмотреть
-```
+```tsx
 import { observer } from "mobx-react";
 import counterStore from "../../stores/store/CounterStore";
 import testStore from "../../stores/store/TestStore";
@@ -966,7 +966,7 @@ export default Mobx;
 
 8. Запуск через единый `root-файл`
 в папке `stores` создаём `RootStore.ts`
-```
+```tsx
 import { makeObservable } from 'mobx';
 import { TestStore } from './store/TestStore';
 import { CounterStore } from './store/CounterStore';
@@ -994,7 +994,7 @@ export default rootStore;
 ```
 
 в папке `stores` создаём `RootStoreContext.ts`
-```
+```tsx
 import { createContext, useContext } from 'react';
 import { RootStore } from './RootStore';
 
@@ -1010,7 +1010,7 @@ export const useStores = () => {
 ```
 
 В `index.tsx` добавить
-```
+```tsx
 ...
 import { RootStoreContext } from './stores/RootStoreContext';
 import rootStore from './stores/RootStore';
@@ -1024,7 +1024,7 @@ import rootStore from './stores/RootStore';
 ```
 
 Компонент `Mobx.tsx`
-```
+```tsx
 import { observer } from "mobx-react";
 import { useEffect } from "react";
 import { useStores } from "../../stores/RootStoreContext";
@@ -1071,7 +1071,7 @@ export default Mobx;
 9. Реакции `Mobx`
 * autorun
 Выполняет функцию сразу и при каждом изменении зависимостей:
-```
+```tsx
 import { autorun } from 'mobx';
 
 autorun(() => {
@@ -1079,7 +1079,7 @@ autorun(() => {
 });
 ```
 - Используйте для логирования, аналитики или синхронизации с localStorage.
----
+---tsx
 * reaction
 Запускает эффект только при изменении конкретных данных:
 ```
@@ -1093,10 +1093,10 @@ reaction(
 );
 ```
 - Используйте для условных действий (например, уведомлений).
----
+---tsx
 * when
 Выполняет действие один раз при выполнении условия:
-```
+```tsx
 import { when } from 'mobx';
 
 when(
