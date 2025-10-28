@@ -238,7 +238,7 @@ module.exports = {
   devtool: "source-map",
   entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "build"),
     publicPath: "/",
     filename: "[name].[contenthash].js", // Динамические имена для чанков
     clean: true,
@@ -309,7 +309,7 @@ module.exports = {
       patterns: [
         {
           from: path.resolve(__dirname, "public"),
-          to: path.resolve(__dirname, "dist"),
+          to: path.resolve(__dirname, "build"),
           globOptions: {
             ignore: ["**/index.html"],
           },
