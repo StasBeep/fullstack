@@ -29,31 +29,7 @@ const MainPage = () => {
       m: '0 auto'
     }}
   >
-    <Typography
-      component={'h2'}
-      sx={{
-        fontSize: '22px',
-        my: 2
-      }}
-    >
-      {
-        data ? data : 'Данных с сервера нет'
-      }
-    </Typography>
-    <Button
-      variant='outlined'
-      color='warning'
-      onClick={() => navigate('/change-backend')}
-    >
-      Change data
-    </Button>
-    <Button
-      variant='outlined'
-      color='warning'
-      onClick={() => navigate('/mobx')}
-    >
-      Mobx
-    </Button>
+    
   </Box>
 };
 
