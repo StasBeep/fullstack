@@ -1,6 +1,8 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 
+require('dotenv').config();
+
 import { dataNewTodo } from "./src/api/newtodo.js";
 
 const express = require("express");
